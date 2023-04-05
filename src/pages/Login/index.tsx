@@ -1,7 +1,8 @@
 import { SpotifyLogo } from "phosphor-react";
 import React from "react";
-import { loginEndpoint } from "../../spotify";
+
 import { LoginContainer } from "./styles";
+import { loginEndpoint } from "../../api/spotify";
 
 export default function Login() {
   return (

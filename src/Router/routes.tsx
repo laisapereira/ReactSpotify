@@ -3,9 +3,11 @@ import { Home } from "../pages/Home";
 import ListTrack from "../pages/ListTrack";
 import Login from "../pages/Login";
 import { useEffect, useState } from "react";
+import { setClientToken } from "../api/spotify";
 
 export function Router() {
   const [token, setToken] = useState("");
+ 
 
   useEffect(() => {
     const token = window.localStorage.getItem("token");
@@ -16,10 +18,13 @@ export function Router() {
       const _token = hash.split("&")[0].split("=")[1];
       window.localStorage.setItem("token", _token);
       setToken(_token);
+      setClientToken(_token)
     } else {
       setToken(token as string);
+      setClientToken(token as string)
     }
   }, []);
+
 
   return !token ? (
     <BrowserRouter>
