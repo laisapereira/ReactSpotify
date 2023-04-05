@@ -10,7 +10,7 @@ export function Home() {
   const token = window.localStorage.getItem("token");
 
   const searchAlbum = async (searchKey: string) => {
-    if (searchKey === "") return setAlbums(null)
+    if (searchKey === "") return setAlbums(null);
 
     try {
       const albumResponse = await apiClient.get<IAlbumSpotify>("/search", {
@@ -20,21 +20,21 @@ export function Home() {
         params: {
           q: searchKey,
           type: "album",
+          limit: 10,
         },
       });
 
       setAlbums(albumResponse.data);
-      console.log(albums);
+      console.log(albums?.albums);
     } catch (error) {
       console.log(error);
     }
   };
 
   const delayedSearchAlbum = useCallback(
-    debounce((searchKey: string) => searchAlbum(searchKey), 500),
+    debounce((searchKey: string) => searchAlbum(searchKey), 100),
     []
   );
-
 
   return (
     <HomeContainer>
