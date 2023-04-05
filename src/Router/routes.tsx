@@ -6,16 +6,21 @@ import { useEffect, useState } from "react";
 
 export function Router() {
   const [token, setToken] = useState("");
-  useEffect(() => {
-    const hash = window.location.hash;
-    const _token = hash.split("&")[0].split("=")[1];
-    window.localStorage.setItem("token", _token);
-    setToken(_token);
 
-    if (_token) {
+  useEffect(() => {
+    const token = window.localStorage.getItem("token");
+    const hash = window.location.hash;
+    window.history.replaceState({}, document.title, window.location.pathname);
+
+    if (!token && hash) {
+      const _token = hash.split("&")[0].split("=")[1];
+      window.localStorage.setItem("token", _token);
       setToken(_token);
+    } else {
+      setToken(token as string);
     }
   }, []);
+
   return !token ? (
     <BrowserRouter>
       <Login />
