@@ -3,9 +3,11 @@ import { EachTrack, ListTrackContainer } from "./styles";
 import { ITrackSpotify } from "../../Types/tracks";
 import { apiClient } from "../../api/spotify";
 import { useParams } from "react-router-dom";
+import AudioPlayer from "./PlayerAudio";
 
 export default function ListTrack() {
   const { albumId } = useParams<{ albumId: string }>();
+  const [selectedTrack, setSelectedTrack] = useState<string | null>(null);
   const [tracks, setTracks] = useState<ITrackSpotify>();
 
   useEffect(() => {
@@ -15,7 +17,9 @@ export default function ListTrack() {
           `/albums/${albumId}/tracks`
         );
         setTracks(trackResponse.data);
-      } catch (error) {}
+      } catch (error) {
+        console.log(error);
+      }
     };
     if (albumId !== undefined) {
       fetchTracks(albumId);
@@ -34,6 +38,16 @@ export default function ListTrack() {
           <h3>{track.artists[0].name}</h3>
           <h3>{track.track_number}</h3>
           <h3>{track.href}</h3>
+          {track.preview_url ? (
+            <AudioPlayer src={track.preview_url} />
+          ) : (
+            <a
+              href={track.external_urls.spotify}
+              onClick={() => setSelectedTrack(track.id)}
+            >
+              Ouça a demo
+            </a>
+          )}
         </EachTrack>
       ))}
     </ListTrackContainer>
