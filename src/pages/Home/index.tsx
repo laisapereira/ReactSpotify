@@ -36,11 +36,6 @@ export function Home() {
     []
   );
 
-  /*  const navigate = useNavigate();
- /*  const handleAlbumClick = (albumId:string) => {
-    navigate(`/albums/${albumId}/tracks`)
-  } */
-
   return (
     <HomeContainer>
       <form
