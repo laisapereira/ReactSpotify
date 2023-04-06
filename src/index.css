@@ -6,6 +6,19 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #1d1d1d;
+  a,
+  button {
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  a:hover {
+    transform: scale(1.1);
+  }
+
+  button:hover{
+    transform: scale(1.1);
+  }
 }
 
 code {

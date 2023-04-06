@@ -5,6 +5,11 @@ import { apiClient } from "../../api/spotify";
 import { useParams } from "react-router-dom";
 import AudioPlayer from "./PlayerAudio";
 
+// colocar player de audio
+// passar variáveis de ambiente para process.env
+// criar botão de voltar para home
+// criar botão de logout
+
 export default function ListTrack() {
   const { albumId } = useParams<{ albumId: string }>();
   const [selectedTrack, setSelectedTrack] = useState<string | null>(null);
@@ -36,8 +41,7 @@ export default function ListTrack() {
         <EachTrack key={track.id}>
           <h2>{track.name}</h2>
           <h3>{track.artists[0].name}</h3>
-          <h3>{track.track_number}</h3>
-          <h3>{track.href}</h3>
+          <h3>Faixa {track.track_number}</h3>
           {track.preview_url ? (
             <AudioPlayer src={track.preview_url} />
           ) : (

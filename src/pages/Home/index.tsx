@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import { IAlbumSpotify } from "../../Types/albums";
-import { HomeContainer } from "./styles";
+import { EachAlbumGallery, HomeContainer, MusicGallery } from "./styles";
 import { apiClient } from "../../api/spotify";
 import { debounce } from "../../Utils/debounce";
 import { Link } from "react-router-dom";
@@ -45,24 +45,24 @@ export function Home() {
       >
         <input
           type="text"
+          placeholder="Pesquise um álbum ou artista..."
           onChange={(e) => {
             delayedSearchAlbum(e.target.value);
           }}
         />
       </form>
-      <div className="teste">
+      <MusicGallery>
         {albums?.albums.items.map((album) => (
-          <div key={album.id}>
-            <img src={album.images[0].url} alt="" />
-            <h2>{album.name}</h2>
-            <h3>{album.artists[0].name}</h3>
-            <h3>{album.release_date.split("")}</h3>
+          <EachAlbumGallery key={album.id}>
             <Link to={`/albums/${album.id}/tracks`}>
-              <button>Ver faixas</button>
+              <img src={album.images[0].url} alt="" />
+              <h2>{album.name}</h2>
+              <h3>{album.artists[0].name}</h3>
+              <h4>{album.release_date.split("")}</h4>
             </Link>
-          </div>
+          </EachAlbumGallery>
         ))}
-      </div>
+      </MusicGallery>
     </HomeContainer>
   );
 }
