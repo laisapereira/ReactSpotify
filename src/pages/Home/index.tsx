@@ -1,13 +1,12 @@
 import { useState, useCallback } from "react";
 import { IAlbumSpotify } from "../../Types/albums";
-import { HomeContainer } from "./styles";
+import { EachAlbumGallery, HomeContainer, MusicGallery } from "./styles";
 import { apiClient } from "../../api/spotify";
 import { debounce } from "../../Utils/debounce";
 import { Link } from "react-router-dom";
 
 export function Home() {
   const [albums, setAlbums] = useState<IAlbumSpotify | null>();
-
   const token = window.localStorage.getItem("token");
 
   const searchAlbum = async (searchKey: string) => {
@@ -36,10 +35,28 @@ export function Home() {
     []
   );
 
-  /*  const navigate = useNavigate();
- /*  const handleAlbumClick = (albumId:string) => {
-    navigate(`/albums/${albumId}/tracks`)
-  } */
+  function convertDate(date: string) {
+    const months = [
+      "Janeiro",
+      "Fevereiro",
+      "Março",
+      "Abril",
+      "Maio",
+      "Junho",
+      "Julho",
+      "Agosto",
+      "Setembro",
+      "Outubro",
+      "Novembro",
+      "Dezembro",
+    ];
+
+    const year = date.split("-")[0];
+    const month = months[Number(date.split("-")[1]) - 1];
+    const day = date.split("-")[2];
+
+    return `${day} de ${month} de ${year}`;
+  }
 
   return (
     <HomeContainer>
@@ -50,24 +67,26 @@ export function Home() {
       >
         <input
           type="text"
+          placeholder="Pesquise um álbum ou artista..."
           onChange={(e) => {
             delayedSearchAlbum(e.target.value);
           }}
         />
       </form>
-      <div className="teste">
+      <MusicGallery>
         {albums?.albums.items.map((album) => (
-          <div key={album.id}>
-            <img src={album.images[0].url} alt="" />
-            <h2>{album.name}</h2>
-            <h3>{album.artists[0].name}</h3>
-            <h3>{album.release_date.split("")}</h3>
-            <Link to={`/albums/${album.id}/tracks`}>
-              <button>Ver faixas</button>
+          <EachAlbumGallery key={album.id}>
+            <Link
+              to={`/albums/${album.id}/tracks?albumImage=${album.images[0].url}&albumName=${album.name}`}
+            >
+              <img src={album.images[0].url} alt="" />
+              <h2>{album.name}</h2>
+              <h3>{album.artists[0].name}</h3>
+              <h4>{convertDate(album.release_date)}</h4>
             </Link>
-          </div>
+          </EachAlbumGallery>
         ))}
-      </div>
+      </MusicGallery>
     </HomeContainer>
   );
 }

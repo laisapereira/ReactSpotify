@@ -4,8 +4,10 @@ import { HeaderContainer } from "./styles";
 export default function Header() {
   return (
     <HeaderContainer>
-      {/* <SpotifyLogo size={200} color="green" /> */}
-      <h1> React Spotify</h1>
+      <a href="/">
+        <SpotifyLogo size={"clamp:(8vw, 8rem, 10vw)"} color="white" />
+      </a>
+      <h1> ReactSpotify</h1>
     </HeaderContainer>
   );
 }
