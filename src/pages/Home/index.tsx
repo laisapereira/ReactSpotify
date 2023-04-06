@@ -35,7 +35,6 @@ export function Home() {
     []
   );
 
-
   function convertDate(date: string) {
     const months = [
       "Janeiro",
@@ -49,17 +48,15 @@ export function Home() {
       "Setembro",
       "Outubro",
       "Novembro",
-      "Dezembro"
+      "Dezembro",
     ];
-  
+
     const year = date.split("-")[0];
     const month = months[Number(date.split("-")[1]) - 1];
     const day = date.split("-")[2];
-  
+
     return `${day} de ${month} de ${year}`;
   }
-
-  
 
   return (
     <HomeContainer>
@@ -80,7 +77,7 @@ export function Home() {
         {albums?.albums.items.map((album) => (
           <EachAlbumGallery key={album.id}>
             <Link
-              to={`/albums/${album.id}/tracks?albumImage=${album.images[0].url}`}
+              to={`/albums/${album.id}/tracks?albumImage=${album.images[0].url}&albumName=${album.name}`}
             >
               <img src={album.images[0].url} alt="" />
               <h2>{album.name}</h2>

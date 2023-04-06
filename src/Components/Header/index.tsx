@@ -5,7 +5,7 @@ export default function Header() {
   return (
     <HeaderContainer>
       <a href="/">
-        <SpotifyLogo size={200} color="white" />
+        <SpotifyLogo size={"clamp:(8vw, 8rem, 10vw)"} color="white" />
       </a>
       <h1> ReactSpotify</h1>
     </HeaderContainer>

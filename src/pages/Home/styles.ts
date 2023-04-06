@@ -38,14 +38,36 @@ export const HomeContainer = styled.div`
       font-weight: normal;
     }
   }
+
+  @media (max-width: 1000px) {
+    padding: 10rem 3rem;
+
+    form {
+      width: 80%;
+    }
+
+    input {
+      width: 35rem;
+    }
+  }
 `;
 
 export const MusicGallery = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 4rem 3rem;
-  max-width: 90%;
+  max-width: 100%;
   margin: 0 auto;
+
+  @media screen and (min-width: 300px) and (max-width: 849px) {
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 4rem 2rem;
+    max-width: 80%;
+  }
+
+  @media screen and (min-width: 850px) and (max-width: 1000px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 export const EachAlbumGallery = styled.div`
@@ -69,15 +91,15 @@ export const EachAlbumGallery = styled.div`
   &:hover {
     cursor: pointer;
     transform: scale(1.1);
-    background-color: rgba(70, 68, 68, 1)
+    background-color: rgba(70, 68, 68, 1);
   }
 
   h2 {
     color: white;
-
   }
 
-  h3, h4 {
-    color:#c9c9c9;
+  h3,
+  h4 {
+    color: #c9c9c9;
   }
 `;

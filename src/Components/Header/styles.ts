@@ -15,4 +15,8 @@ export const HeaderContainer = styled.div`
   h1 {
     font-size: clamp(1.5rem, 5vw, 4rem);
   }
+
+  @media (max-width: 560px) {
+    flex-direction: column;
+  }
 `;

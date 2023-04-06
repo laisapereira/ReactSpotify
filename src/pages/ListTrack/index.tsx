@@ -10,6 +10,7 @@ export default function ListTrack() {
   const { albumId } = useParams<{ albumId: string }>();
   const location = useLocation();
   const albumImage = new URLSearchParams(location.search).get("albumImage");
+  const albumName = new URLSearchParams(location.search).get("albumName");
   const [tracks, setTracks] = useState<ITrackSpotify>();
 
   useEffect(() => {
@@ -40,6 +41,7 @@ export default function ListTrack() {
   return (
     <>
       <ListTrackContainer>
+        <h2 className="title-album">{albumName}</h2>
         {tracks?.items.map((track) => (
           <EachTrack key={track.id} albumImage={albumImage as string}>
             <h2>{track.name}</h2>
