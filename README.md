@@ -1,6 +1,6 @@
 # ReactSpotify
 
-ReactSpotify é uma aplicação web construída com ReactJS e Typescript, que permite buscar e visualizar álbuns e faixas do Spotify. Esta aplicação usa a API do Spotify para buscar os álbuns e as faixas.
+ReactSpotify é uma aplicação web construída com ReactJS e Typescript, que permite buscar e visualizar álbuns e faixas do Spotify, utilizando a API do Spotify para buscar os álbuns e as faixas.
 
 # Instalação
 Para instalar a aplicação, basta clonar este repositório, e em seguida instalar as dependências do projeto com o gerenciador de pacotes npm, usando o seguinte comando:
