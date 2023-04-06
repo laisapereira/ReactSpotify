@@ -13,7 +13,7 @@ export const ListTrackContainer = styled.div`
   gap: 3rem;
 `;
 
-export const EachTrack = styled.div`
+export const EachTrackContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -22,6 +22,12 @@ export const EachTrack = styled.div`
   min-width: 500px;
   max-width: 700px;
   height: 80px;
-  width: 60%;
+  width: 70%;
   background-color: #fff5;
+
+  .image-each-track {
+    width: 100px;
+    height: 80px;
+    max-width: 150px;
+  }
 `;
