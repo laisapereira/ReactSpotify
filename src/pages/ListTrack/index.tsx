@@ -18,9 +18,14 @@ export default function ListTrack() {
         console.log(albumId);
       } catch (error) {}
     };
-
-    fetchTracks(albumId as string);
+    if (albumId !== undefined) {
+      fetchTracks(albumId);
+    } 
   }, [albumId]);
+
+  if (albumId === undefined) {
+    return null;
+  }
 
   return (
     <ListTrackContainer>

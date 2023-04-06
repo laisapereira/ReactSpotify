@@ -7,9 +7,9 @@ import { Link } from "react-router-dom";
 
 export function Home() {
   const [albums, setAlbums] = useState<IAlbumSpotify | null>();
-  
+
   const token = window.localStorage.getItem("token");
-  
+
   const searchAlbum = async (searchKey: string) => {
     if (searchKey === "") return setAlbums(null);
 
@@ -36,10 +36,10 @@ export function Home() {
     []
   );
 
- /*  const navigate = useNavigate();
+  /*  const navigate = useNavigate();
  /*  const handleAlbumClick = (albumId:string) => {
     navigate(`/albums/${albumId}/tracks`)
-  } */ 
+  } */
 
   return (
     <HomeContainer>
@@ -62,11 +62,12 @@ export function Home() {
             <h2>{album.name}</h2>
             <h3>{album.artists[0].name}</h3>
             <h3>{album.release_date.split("")}</h3>
-            <Link to={`/albums/${album.id}/tracks`}><button>Ver faixas</button></Link>
+            <Link to={`/albums/${album.id}/tracks`}>
+              <button>Ver faixas</button>
+            </Link>
           </div>
         ))}
       </div>
-      )
     </HomeContainer>
   );
 }

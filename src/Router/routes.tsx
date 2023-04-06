@@ -1,4 +1,4 @@
-import {Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { Home } from "../pages/Home";
 import ListTrack from "../pages/ListTrack";
 import Login from "../pages/Login";
@@ -31,10 +31,7 @@ export function Router() {
   ) : (
     <Routes>
       <Route element={<Home />} path="/" />
-      <Route
-        element={<ListTrack/> }
-        path="/albums/:id/tracks" 
-      />
+      <Route element={<ListTrack />} path="/albums/:albumId/tracks" />
     </Routes>
   );
 }
