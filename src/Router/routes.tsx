@@ -24,9 +24,10 @@ export function Router() {
     }
   }, []);
 
+  
   return !token ? (
     <Routes>
-      <Route element={<Login />} path="/" />
+      <Route element={<Login/>} path="/" />
     </Routes>
   ) : (
     <Routes>

@@ -7,7 +7,7 @@ export const LoginContainer = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 5rem;
 
   a {
     text-decoration: none;
@@ -15,7 +15,7 @@ export const LoginContainer = styled.div`
   button {
     border: 2px solid var(--primary);
     width: clamp(16vw, 14vw, 12vw);
-    position:absolute;
+    position: absolute;
     left: 42%;
     right: 50%;
     top: 65%;

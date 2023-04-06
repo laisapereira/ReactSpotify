@@ -4,6 +4,7 @@ import { EachAlbumGallery, HomeContainer, MusicGallery } from "./styles";
 import { apiClient } from "../../api/spotify";
 import { debounce } from "../../Utils/debounce";
 import { Link } from "react-router-dom";
+import { LoginContainer } from "../Login/styles";
 
 export function Home() {
   const [albums, setAlbums] = useState<IAlbumSpotify | null>();
